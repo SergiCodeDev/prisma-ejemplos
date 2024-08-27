@@ -22,3 +22,17 @@ crear las tablas en desarrollo
 npx prisma migrate dev
 
 le damos un nombre "init"
+
+añadir a schema.prisma
+
+model Post {
+  id Int @id @default(autoincrement())
+  title String @unique
+  content String?
+  authorId Int
+  author User @relation(fields: [authorId], references: [id])
+}
+
+ejecutar 
+
+npx prisma migrate dev --name post-user-relacion

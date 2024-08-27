@@ -12,12 +12,28 @@ datasource db {
 
 // https://www.prisma.io/docs/orm/prisma-schema/data-model/models
 
+// model User {
+//   // id = nombre Int = Tipo de dato (entero) @id = identificador unico @default(autoincrement()) = que se autoincremente solo
+//   id Int @id @default(autoincrement())
+//   // @unique = campo unico
+//   email String @unique
+//   name String
+//   // String? = campo opcional
+//   lastname String?
+// }
+
 model User {
-  // id = nombre Int = Tipo de dato (entero) @id = identificador unico @default(autoincrement()) = que se autoincremente solo
   id Int @id @default(autoincrement())
-  // @unique = campo unico
   email String @unique
   name String
-  // String? = campo opcional
   lastname String?
+  posts Post[]
+}
+
+model Post {
+  id Int @id @default(autoincrement())
+  title String @unique
+  content String?
+  authorId Int
+  author User @relation(fields: [authorId], references: [id])
 }
