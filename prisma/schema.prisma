@@ -1,0 +1,23 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// https://www.prisma.io/docs/orm/prisma-schema/data-model/models
+
+model User {
+  // id = nombre Int = Tipo de dato (entero) @id = identificador unico @default(autoincrement()) = que se autoincremente solo
+  id Int @id @default(autoincrement())
+  // @unique = campo unico
+  email String @unique
+  name String
+  // String? = campo opcional
+  lastname String?
+}
