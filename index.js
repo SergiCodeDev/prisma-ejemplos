@@ -6,6 +6,7 @@ async function main() {
     // crear dato en USER
     // await prismadb.user.create({
     //     data: {
+    //         // trucazo autocompletado vscode control + espacio
     //         name: "uno",
     //         email: "uno@uno.com"
     //     }
@@ -128,6 +129,44 @@ async function main() {
     //     }
     // })
     // console.log(user)
+
+    // crear post
+    // const newPost = await prismadb.post.create({
+    //     data: {
+    //         title: "Primer Post",
+    //         content: "contenido del post",
+    //         // authorId: 8 // no verifica si existe
+    //         author: {
+    //             connect: {
+    //                 id: 8 // user.id
+    //             }
+    //         }
+    //     }
+    // })
+    // console.log(newPost)
+
+    // crear usuario y post a la vez
+    // const newUser = await prismadb.user.create({
+    //     data: {
+    //         name: "Sam",
+    //         email: "sam@codedev.com",
+    //         posts: {
+    //             create: {
+    //                 title: "Nuevo post",
+    //                 content: "crear usuario y post a la vez"
+    //             }
+    //         }
+    //     }
+    // })
+    // console.log(newUser) // devuelve el usuario creado
+
+    // listar usuarios y sus posts
+    const usersAndPosts = await prismadb.user.findMany({
+        include: {
+            posts: true
+        }
+    })
+    console.log(usersAndPosts)
 }
 
 main() // node index.js
