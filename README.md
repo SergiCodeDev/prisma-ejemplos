@@ -1,11 +1,3 @@
-
-crear las tablas en desarrollo
-
-npx prisma migrate dev
-
-le damos un nombre "init"
-
-
 # Guía de Instalación y Configuración de Prisma
 
 ## Instalación en Desarrollo
